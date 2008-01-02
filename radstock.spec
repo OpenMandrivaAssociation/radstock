@@ -20,6 +20,7 @@ BuildRequires:	flex
 BuildRequires:	bison
 BuildRequires:	automake1.7
 BuildRequires:	autoconf2.5
+BuildRoot:	%{_tmppath}/%{name}-%{version}-root
 
 %description
 Radstock is a tool to analyse RADIUS traffic on high volume radius
