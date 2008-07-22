@@ -1,6 +1,6 @@
 %define	name	radstock
 %define	version	0.66
-%define	release	%mkrel 6
+%define	release	%mkrel 7
 
 Summary:	Radstock Radius Analyser
 Name:		%{name}
