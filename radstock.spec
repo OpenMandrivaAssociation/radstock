@@ -1,6 +1,6 @@
 %define	name	radstock
 %define	version	0.66
-%define	release	%mkrel 7
+%define	release	%mkrel 8
 
 Summary:	Radstock Radius Analyser
 Name:		%{name}
@@ -20,7 +20,7 @@ BuildRequires:	flex
 BuildRequires:	bison
 BuildRequires:	automake1.7
 BuildRequires:	autoconf2.5
-BuildRoot:	%{_tmppath}/%{name}-%{version}-root
+BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 %description
 Radstock is a tool to analyse RADIUS traffic on high volume radius
