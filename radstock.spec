@@ -10,6 +10,7 @@ Patch0:		%{name}-%{version}-misc_fixes.patch
 # P0 originates from http://www.cse.fau.edu/~valankar/radstock_password_patch/radstock-0.66.password.patch-1.2.tar.gz
 Patch1:		%{name}-%{version}-password.patch
 Patch2:		radstock-0.66-pcap_headers.diff
+Patch3:		radstock-LDFLAGS.diff
 BuildRequires:	libpcap-devel >= 0.8.3
 BuildRequires:	libavlmap-devel
 BuildRequires:	flex
@@ -27,6 +28,9 @@ capabilities to allow you to selectively match radius packets.
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
+%patch3 -p0
+
+echo "#define VERSION \"%{version}\"" > version.h
 
 %build
 export WANT_AUTOCONF_2_5=1
