@@ -1,0 +1,27 @@
+--- Makefile.in	2008-10-30 13:04:08.000000000 +0100
++++ Makefile.in.oden	2008-10-30 13:03:48.000000000 +0100
+@@ -17,6 +17,7 @@
+ INCLUDES=-I@srcdir@ @PCAP_INCLUDE@
+ CFLAGS=@CFLAGS@ @DEFS@ -DVERSIONSTR=\"$(VERSION)\" -DDICTFILE=\"$(DICT)\"
+ LIBS=-lpcap -lavlmap @EXTRA_LIBS@
++LDFLAGS=@LDFLAGS@
+ 
+ SRC=radstock.c process.c init.c rad_password.c md5.c
+ OBJS=radstock.o process.o init.o y.tab.o lex.yy.o rad_password.o md5.o
+@@ -44,13 +45,13 @@
+ 	gzip ../radstock-$(VERSION).tar	
+ 
+ $(TARGET): $(OBJS) 
+-	$(CC) $(CFLAGS) -o $(TARGET) $(OBJS) $(LIBS) 
++	$(CC) $(CFLAGS) -o $(TARGET) $(OBJS) $(LIBS) $(LDFLAGS)
+ 
+ debug: $(OBJS)
+-	$(CC) $(CFLAGS) -g -o $(TARGET) $(OBJS) $(LIBS) 
++	$(CC) $(CFLAGS) -g -o $(TARGET) $(OBJS) $(LIBS) $(LDFLAGS)
+ 
+ static: $(OBJS)
+-	$(CC) $(CFLAGS) -s -static -o $(TARGET).static $(OBJS) $(LIBS) 
++	$(CC) $(CFLAGS) -s -static -o $(TARGET).static $(OBJS) $(LIBS) $(LDFLAGS)
+ 
+ install: $(TARGET)
+ 	$(INSTALL) -d -m 0755 $(DESTDIR)$(BINDEST)

@@ -1,0 +1,57 @@
+diff -Naur radstock-0.66/configure.in radstock-0.66.oden/configure.in
+--- radstock-0.66/configure.in	2000-10-16 11:37:44.000000000 +0200
++++ radstock-0.66.oden/configure.in	2004-11-13 13:07:17.099020219 +0100
+@@ -24,7 +24,7 @@
+ 
+ for dir in $possible_dirs ; do 
+     if test -d $dir -a -r "$dir/pcap.h" -a \
+-                       -r "$dir/net/bpf.h" ; then 
++                       -r "$dir/pcap/bpf.h" ; then 
+        if test -n "$pcap_dir" ; then
+           echo 
+           echo; echo more than one set found in:
+@@ -47,7 +47,7 @@
+    echo found $pcap_dir
+    
+    AC_MSG_CHECKING(for usable bpf.h)
+-   if test -n "`grep DLT_RAW $pcap_dir/net/bpf.h`" ; then
++   if test -n "`grep DLT_RAW $pcap_dir/pcap/bpf.h`" ; then
+       echo yep
+    else 
+ 
+diff -Naur radstock-0.66/process.c radstock-0.66.oden/process.c
+--- radstock-0.66/process.c	2004-11-13 13:08:30.102689490 +0100
++++ radstock-0.66.oden/process.c	2004-11-13 13:07:46.713697521 +0100
+@@ -42,7 +42,7 @@
+ #include <netinet/ip_icmp.h>
+ 
+ #include <pcap.h>
+-#include <net/bpf.h>
++#include <pcap/bpf.h>
+ 
+ #include <stdlib.h>
+ #include <string.h>
+diff -Naur radstock-0.66/radstock.c radstock-0.66.oden/radstock.c
+--- radstock-0.66/radstock.c	2004-11-13 13:08:30.103689513 +0100
++++ radstock-0.66.oden/radstock.c	2004-11-13 13:08:06.555151195 +0100
+@@ -43,7 +43,7 @@
+ #include <netinet/ip_icmp.h>
+ 
+ #include <pcap.h>
+-#include <net/bpf.h>
++#include <pcap/bpf.h>
+ 
+ #include <stdlib.h>
+ #include <string.h>
+diff -Naur radstock-0.66/init.c radstock-0.66.oden/init.c
+--- radstock-0.66/init.c	2000-10-13 14:23:11.000000000 +0200
++++ radstock-0.66.oden/init.c	2004-11-13 13:16:14.406304349 +0100
+@@ -41,7 +41,7 @@
+ #include <netinet/ip_icmp.h>
+ 
+ #include <pcap.h>
+-#include <net/bpf.h>
++#include <pcap/bpf.h>
+ 
+ #include <stdlib.h>
+ #include <string.h>

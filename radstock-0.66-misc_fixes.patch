@@ -1,0 +1,47 @@
+diff -Naur radstock-0.66/Makefile.in radstock-0.66.oden/Makefile.in
+--- radstock-0.66/Makefile.in	2000-10-26 17:16:42.000000000 +0200
++++ radstock-0.66.oden/Makefile.in	2003-06-28 15:22:58.000000000 +0200
+@@ -7,10 +7,11 @@
+ LEX=@LEX@
+ 
+ INSTALL=./install-sh
+-DICTPATH=@prefix@/etc/raddb
+-DICT=$(DICTPATH)/dictionary
+-BINDEST=@prefix@/bin
+-MANDEST=@prefix@/man/man1
++DICTPATH=@sysconfdir@/raddb
++DICT=$(DICTPATH)/dictionary-radstock
++BINDEST=@bindir@
++MANDEST=@mandir@/man1
++DESTDIR=
+ 
+ VERSION=0.66
+ INCLUDES=-I@srcdir@ @PCAP_INCLUDE@
+@@ -52,10 +53,12 @@
+ 	$(CC) $(CFLAGS) -s -static -o $(TARGET).static $(OBJS) $(LIBS) 
+ 
+ install: $(TARGET)
+-	$(INSTALL) -c -m 0755 $(TARGET) $(BINDEST)
+-	$(INSTALL) -c -m 0644 $(MANPAGE) $(MANDEST)
+-	$(INSTALL) -d -m 0755 $(DICTPATH)
+-	$(INSTALL) -c -m 0644 $(DICTLOCAL) $(DICT)
++	$(INSTALL) -d -m 0755 $(DESTDIR)$(BINDEST)
++	$(INSTALL) -d -m 0755 $(DESTDIR)$(MANDEST)
++	$(INSTALL) -d -m 0755 $(DESTDIR)$(DICTPATH)
++	$(INSTALL) -c -m 0755 $(TARGET) $(DESTDIR)$(BINDEST)
++	$(INSTALL) -c -m 0644 $(MANPAGE) $(DESTDIR)$(MANDEST)
++	$(INSTALL) -c -m 0644 $(DICTLOCAL) $(DESTDIR)$(DICT)
+ 
+ .c.o:	
+ 	$(CC) $(CFLAGS) $(INCLUDES) -g -c $<
+diff -Naur radstock-0.66/radstock.c radstock-0.66.oden/radstock.c
+--- radstock-0.66/radstock.c	2000-10-26 17:16:42.000000000 +0200
++++ radstock-0.66.oden/radstock.c	2003-06-28 15:23:32.000000000 +0200
+@@ -33,6 +33,7 @@
+ #include <arpa/inet.h>
+ #include <ctype.h>
+ #include <regex.h>
++#include <time.h>
+ #endif
+ 
+ 
