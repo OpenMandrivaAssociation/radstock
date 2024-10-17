@@ -4,7 +4,7 @@ Version:	0.66
 Release:	%mkrel 11
 Group:		System/Servers
 License:	GPL
-URL:		http://sourceforge.net/projects/radstock/
+URL:		https://sourceforge.net/projects/radstock/
 Source0:	%{name}-%{version}.tar.bz2
 Patch0:		%{name}-%{version}-misc_fixes.patch
 # P0 originates from http://www.cse.fau.edu/~valankar/radstock_password_patch/radstock-0.66.password.patch-1.2.tar.gz
