@@ -11,6 +11,11 @@ Patch0:		%{name}-%{version}-misc_fixes.patch
 Patch1:		%{name}-%{version}-password.patch
 Patch2:		radstock-0.66-pcap_headers.diff
 Patch3:		radstock-LDFLAGS.diff
+BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	libtool-base
+BuildRequires:	slibtool
+BuildRequires:	make
 BuildRequires:	libpcap-devel >= 0.8.3
 BuildRequires:	libavlmap-devel
 BuildRequires:	flex
