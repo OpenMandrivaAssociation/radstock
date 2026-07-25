@@ -1,7 +1,7 @@
 Summary:	Radstock Radius Analyser
 Name:		radstock
 Version:	0.66
-Release:	%mkrel 11
+Release:	12
 Group:		System/Servers
 License:	GPL
 URL:		https://sourceforge.net/projects/radstock/
